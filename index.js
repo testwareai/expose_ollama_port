@@ -3,12 +3,12 @@ const { createProxyMiddleware } = require("http-proxy-middleware");
 
 const app = express();
 
-// Status route
-app.get("/status", (req, res) => {
-  res
-    .status(200)
-    .send({ status: "OK", message: "Server is running smoothly." });
-});
+// // Status route
+// app.get("/status", (req, res) => {
+//   res
+//     .status(200)
+//     .send({ status: "OK", message: "Server is running smoothly." });
+// });
 
 // Configure proxy middleware
 const ollamaProxy = createProxyMiddleware({
@@ -18,7 +18,7 @@ const ollamaProxy = createProxyMiddleware({
 });
 
 // Example: Forward all requests from /ollama to the ollama application
-app.use("/ollama", ollamaProxy);
+app.use("/", ollamaProxy);
 
 // Alternatively, to proxy all incoming requests to the ollama app, use this:
 // app.use(ollamaProxy);
